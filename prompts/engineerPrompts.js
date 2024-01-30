@@ -6,6 +6,14 @@ const engineerPrompts = () => {
       type: "input",
       name: "engineer_name",
       message: "What is the engineer's name?",
+      validate: (response) => {
+        if (response) {
+          return true;
+        } else {
+          console.log("That didn't work. Re-enter your engineers name.");
+          return false;
+        }
+      },
     },
     {
       type: "input",
@@ -15,7 +23,7 @@ const engineerPrompts = () => {
         if (response) {
           return true;
         } else {
-          console.log("That didn't work. Re-enter your managers name.");
+          console.log("That didn't work. Re-enter your engineers id.");
           return false;
         }
       },
@@ -28,7 +36,7 @@ const engineerPrompts = () => {
         if (response) {
           return true;
         } else {
-          console.log("That didn't work. Re-enter your managers name.");
+          console.log("That didn't work. Re-enter your managers email.");
           return false;
         }
       },

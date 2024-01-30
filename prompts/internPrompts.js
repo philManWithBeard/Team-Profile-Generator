@@ -4,63 +4,33 @@ const internPrompts = () => {
   return inquirer.prompt([
     {
       type: "input",
-      name: "name",
-      message: "What's the team managers name?",
-      // was there a response, if not then return false
-      validate: (response) => {
-        if (response) {
-          return true;
-        } else {
-          console.log("That didn't work. Re-enter your managers name.");
-          return false;
-        }
+      name: "intern_name",
+      message: "What is your intern's name?",
+    },
+    {
+      type: "input",
+      name: "intern_id",
+      message: "What is your intern's id?",
+      validate: function (value) {
+        if (isNaN(value)) return " Please enter valid ID";
+        else return true;
       },
     },
     {
       type: "input",
-      name: "employeeId",
-      message: "What's the managers Employee ID?",
-      // was there a response, if not then return false
-      validate: (response) => {
-        if (response) {
-          return true;
-        } else {
-          console.log("That didn't work. Re-enter your managers Employee ID.");
-          return false;
-        }
+      name: "intern_email",
+      message: "What is your intern's email?",
+      validate: function (value) {
+        valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+
+        if (valid) return true;
+        else return "  Please enter valid email ID ";
       },
     },
     {
       type: "input",
-      name: "email",
-      message: "What's the team managers email address?",
-      // was there a response, if not then return false
-      validate: (response) => {
-        if (response) {
-          return true;
-        } else {
-          console.log(
-            "That didn't work. Re-enter your managers email address."
-          );
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "officeNumber",
-      message: "What's the team managers office number?",
-      // was there a response, if not then return false
-      validate: (response) => {
-        if (response) {
-          return true;
-        } else {
-          console.log(
-            "That didn't work. Re-enter your managers office number."
-          );
-          return false;
-        }
-      },
+      name: "intern_school",
+      message: "What is your intern's school?",
     },
   ]);
 };
