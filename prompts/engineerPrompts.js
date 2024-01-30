@@ -4,9 +4,13 @@ const engineerPrompts = () => {
   return inquirer.prompt([
     {
       type: "input",
-      name: "name",
-      message: "What's the team managers name?",
-      // was there a response, if not then return false
+      name: "engineer_name",
+      message: "What is the engineer's name?",
+    },
+    {
+      type: "input",
+      name: "engineer_id",
+      message: "What is the engineer's id?",
       validate: (response) => {
         if (response) {
           return true;
@@ -18,45 +22,27 @@ const engineerPrompts = () => {
     },
     {
       type: "input",
-      name: "employeeId",
-      message: "What's the managers Employee ID?",
-      // was there a response, if not then return false
+      name: "engineer_email",
+      message: "What is your engineer's email?",
       validate: (response) => {
         if (response) {
           return true;
         } else {
-          console.log("That didn't work. Re-enter your managers Employee ID.");
+          console.log("That didn't work. Re-enter your managers name.");
           return false;
         }
       },
     },
     {
       type: "input",
-      name: "email",
-      message: "What's the team managers email address?",
-      // was there a response, if not then return false
+      name: "engineer_github",
+      message: "What is your engineer's github username?",
       validate: (response) => {
         if (response) {
           return true;
         } else {
           console.log(
-            "That didn't work. Re-enter your managers email address."
-          );
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "officeNumber",
-      message: "What's the team managers office number?",
-      // was there a response, if not then return false
-      validate: (response) => {
-        if (response) {
-          return true;
-        } else {
-          console.log(
-            "That didn't work. Re-enter your managers office number."
+            "That didn't work. Re-enter your engineer's github username?"
           );
           return false;
         }
