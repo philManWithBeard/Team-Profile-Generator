@@ -48,6 +48,17 @@ const employeeChoice = async () => {
     const answers = await choicePrompts();
 
     console.log(answers);
+    switch (answers.team_member) {
+      case "Engineer":
+        console.log("hi engineer");
+        break;
+      case "Intern":
+        console.log("hi intern");
+        break;
+      default:
+        console.log("no more employees");
+        break;
+    }
   } catch (err) {
     // log errors to the user
     console.log(err);
