@@ -32,3 +32,8 @@ npm run test
 ```
 node app.js
 ```
+
+# Video Preview
+https://github.com/philManWithBeard/Team-Profile-Generator/assets/48831325/9b912c52-a93d-4160-a0b7-ad4767e89ab1
+
+
