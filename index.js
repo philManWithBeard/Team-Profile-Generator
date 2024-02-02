@@ -15,7 +15,6 @@ import engineerPrompts from "./prompts/engineerPrompts.js";
 // const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 import render from "./src/page-template.js";
-// const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -48,17 +47,16 @@ const employeeChoice = async () => {
     // asks user questions and wait for response
     const answers = await choicePrompts();
 
-    console.log(answers);
     switch (answers.team_member) {
       case "Engineer":
-        console.log("hi engineer");
         engineer();
         break;
       case "Intern":
-        console.log("hi intern");
+        intern();
         break;
       default:
         console.log("no more employees");
+        render(employees);
         break;
     }
   } catch (err) {
@@ -79,6 +77,25 @@ const engineer = async () => {
     );
 
     employees.push(engineerObj);
+    console.log(employees);
+    employeeChoice();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// asynchronous function to initialise the app
+const intern = async () => {
+  try {
+    const answers = await internPrompts();
+    const internObj = new Intern(
+      answers.intern_name,
+      answers.intern_id,
+      answers.intern_email,
+      answers.intern_school
+    );
+
+    employees.push(internObj);
     console.log(employees);
     employeeChoice();
   } catch (error) {
