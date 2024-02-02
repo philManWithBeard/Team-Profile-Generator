@@ -24,8 +24,15 @@ const manager = async () => {
     // asks user questions and wait for response
     const answers = await managerPrompts();
 
+    const managerObj = new Manager(
+      answers.name,
+      answers.employeeId,
+      answers.email,
+      answers.officeNumber
+    );
     // push the results into employees array
-    employees.push(answers);
+    employees.push(managerObj);
+    console.log(employees);
   } catch (err) {
     // log errors to the user
     console.log(err);
