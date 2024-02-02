@@ -12,7 +12,7 @@ I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
 ```
 
-# Installation
+## Installation
 
 - Clone the repository.
 - To install necessary dependencies, run the following command :
@@ -33,7 +33,16 @@ npm run test
 node app.js
 ```
 
-# Video Preview
+## Video Preview
 https://github.com/philManWithBeard/Team-Profile-Generator/assets/48831325/9b912c52-a93d-4160-a0b7-ad4767e89ab1
 
+## License
+MIT
+
+## Contributing
+Reach out using the contact details below or create an issue
+
+## Questions
+See my Github
+Email: philburrowsfm@gmail.com
 
