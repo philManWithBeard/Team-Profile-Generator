@@ -81,7 +81,7 @@ const generateTeam = (team) => {
 };
 
 // exports function to generate entire page
-const team = () => {
+const team = (team) => {
   return `
     <!DOCTYPE html>
 <html lang="en">
