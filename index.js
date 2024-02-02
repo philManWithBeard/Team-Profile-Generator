@@ -3,16 +3,18 @@ import Engineer from "./lib/Engineer.js";
 import Intern from "./lib/Intern.js";
 import inquirer from "inquirer";
 import figlet from "figlet";
-// const inquirer = require("inquirer");
 import path from "path";
+import { fileURLToPath } from "url";
 import fs from "fs";
 import managerPrompts from "./prompts/managerPrompts.js";
 import choicePrompts from "./prompts/choicePrompts.js";
 import internPrompts from "./prompts/internPrompts.js";
 import engineerPrompts from "./prompts/engineerPrompts.js";
 
-// const OUTPUT_DIR = path.resolve(__dirname, "output");
-// const outputPath = path.join(OUTPUT_DIR, "team.html");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 import render from "./src/page-template.js";
 
@@ -56,7 +58,8 @@ const employeeChoice = async () => {
         break;
       default:
         console.log("no more employees");
-        render(employees);
+        const html = render(employees);
+        writeToFile(html);
         break;
     }
   } catch (err) {
@@ -77,7 +80,6 @@ const engineer = async () => {
     );
 
     employees.push(engineerObj);
-    console.log(employees);
     employeeChoice();
   } catch (error) {
     console.log(error);
@@ -96,12 +98,26 @@ const intern = async () => {
     );
 
     employees.push(internObj);
-    console.log(employees);
     employeeChoice();
   } catch (error) {
     console.log(error);
   }
 };
+
+// Function to write to output file
+function writeToFile(html) {
+  // Checks if 'output' folder exists in current directory
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    // Create 'output' folder if does not exists
+    fs.mkdirSync(OUTPUT_DIR, 0o744);
+    console.log("TADA! output folder Created!");
+  }
+
+  // write htmldata to 'team.html' file
+  fs.writeFileSync(outputPath, html, "utf8");
+
+  console.log("TADA! TEAM GENERATED MAGIC!");
+}
 
 // function call to initialize program
 manager();
