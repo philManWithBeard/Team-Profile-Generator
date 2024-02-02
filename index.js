@@ -1,8 +1,6 @@
 import Manager from "./lib/Manager.js";
 import Engineer from "./lib/Engineer.js";
 import Intern from "./lib/Intern.js";
-import inquirer from "inquirer";
-import figlet from "figlet";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
@@ -10,32 +8,35 @@ import managerPrompts from "./prompts/managerPrompts.js";
 import choicePrompts from "./prompts/choicePrompts.js";
 import internPrompts from "./prompts/internPrompts.js";
 import engineerPrompts from "./prompts/engineerPrompts.js";
+import render from "./src/page-template.js";
 
+// set output directories and paths
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-import render from "./src/page-template.js";
-
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
-
+// Set array to pass employees in to
 const employees = [];
 
-// asynchronous function to initialise the app
+// function to start the manager prompts, pass them into a new Manager object and to push that object into an array
 const manager = async () => {
   try {
-    // asks user questions and wait for response
+    // asks user manager questions and wait for response
     const answers = await managerPrompts();
 
+    // instantiate new manager object
     const managerObj = new Manager(
       answers.name,
       answers.employeeId,
       answers.email,
       answers.officeNumber
     );
+
     // push the results into employees array
     employees.push(managerObj);
+
+    // call the employee choice function
     employeeChoice();
   } catch (err) {
     // log errors to the user
@@ -43,12 +44,13 @@ const manager = async () => {
   }
 };
 
-// asynchronous function to initialise the app
+// function to start the employee choice prompts, then call the appropriate function
 const employeeChoice = async () => {
   try {
     // asks user questions and wait for response
     const answers = await choicePrompts();
 
+    // selects the correct function to call based on user input
     switch (answers.team_member) {
       case "Engineer":
         engineer();
@@ -57,8 +59,9 @@ const employeeChoice = async () => {
         intern();
         break;
       default:
-        console.log("no more employees");
+        // renders the html
         const html = render(employees);
+        //sends html to writeToFile function
         writeToFile(html);
         break;
     }
@@ -68,10 +71,12 @@ const employeeChoice = async () => {
   }
 };
 
-// asynchronous function to initialise the app
+// function to start the engineer prompts, pass them into a new engineer object and to push that object into an array
 const engineer = async () => {
   try {
+    // uses imported inquirer prompts
     const answers = await engineerPrompts();
+    // creates a new Engineer object to store them in
     const engineerObj = new Engineer(
       answers.engineer_name,
       answers.engineer_id,
@@ -79,17 +84,22 @@ const engineer = async () => {
       answers.engineer_github
     );
 
+    // pushes them into the employees array
     employees.push(engineerObj);
+    // calls the employeechoice function again
     employeeChoice();
   } catch (error) {
     console.log(error);
   }
 };
 
-// asynchronous function to initialise the app
+// function to start the intern prompts, pass them into a new intern object and to push that object into an array
 const intern = async () => {
   try {
+    // uses imported inquirer prompts
     const answers = await internPrompts();
+
+    // creates a new Intern object to store answers in
     const internObj = new Intern(
       answers.intern_name,
       answers.intern_id,
