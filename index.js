@@ -7,6 +7,7 @@ import figlet from "figlet";
 import path from "path";
 import fs from "fs";
 import managerPrompts from "./prompts/managerPrompts.js";
+import choicePrompts from "./prompts/choicePrompts.js";
 
 // const OUTPUT_DIR = path.resolve(__dirname, "output");
 // const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -33,6 +34,20 @@ const manager = async () => {
     // push the results into employees array
     employees.push(managerObj);
     console.log(employees);
+    employeeChoice();
+  } catch (err) {
+    // log errors to the user
+    console.log(err);
+  }
+};
+
+// asynchronous function to initialise the app
+const employeeChoice = async () => {
+  try {
+    // asks user questions and wait for response
+    const answers = await choicePrompts();
+
+    console.log(answers);
   } catch (err) {
     // log errors to the user
     console.log(err);
