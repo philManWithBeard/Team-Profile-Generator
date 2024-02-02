@@ -8,6 +8,8 @@ import path from "path";
 import fs from "fs";
 import managerPrompts from "./prompts/managerPrompts.js";
 import choicePrompts from "./prompts/choicePrompts.js";
+import internPrompts from "./prompts/internPrompts.js";
+import engineerPrompts from "./prompts/engineerPrompts.js";
 
 // const OUTPUT_DIR = path.resolve(__dirname, "output");
 // const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -33,7 +35,6 @@ const manager = async () => {
     );
     // push the results into employees array
     employees.push(managerObj);
-    console.log(employees);
     employeeChoice();
   } catch (err) {
     // log errors to the user
@@ -51,6 +52,7 @@ const employeeChoice = async () => {
     switch (answers.team_member) {
       case "Engineer":
         console.log("hi engineer");
+        engineer();
         break;
       case "Intern":
         console.log("hi intern");
@@ -62,6 +64,25 @@ const employeeChoice = async () => {
   } catch (err) {
     // log errors to the user
     console.log(err);
+  }
+};
+
+// asynchronous function to initialise the app
+const engineer = async () => {
+  try {
+    const answers = await engineerPrompts();
+    const engineerObj = new Engineer(
+      answers.engineer_name,
+      answers.engineer_id,
+      answers.engineer_email,
+      answers.engineer_github
+    );
+
+    employees.push(engineerObj);
+    console.log(employees);
+    employeeChoice();
+  } catch (error) {
+    console.log(error);
   }
 };
 
