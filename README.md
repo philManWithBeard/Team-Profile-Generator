@@ -12,6 +12,10 @@ I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
 ```
 
+## Try it out on Stackblitz
+
+Go to [Stackblitz](https://stackblitz.com/~/github.com/philManWithBeard/team-profile-generator) and type node index.js in the terminal
+
 ## Installation
 
 - Clone the repository.
