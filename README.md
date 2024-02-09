@@ -30,7 +30,7 @@ npm run test
 - The application can be started with the following command:
 
 ```
-node app.js
+node index.js
 ```
 
 ## Video Preview
