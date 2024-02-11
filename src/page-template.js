@@ -117,4 +117,4 @@ const team = (team) => {
     `;
 };
 
-export default team;
+module.exports = team;

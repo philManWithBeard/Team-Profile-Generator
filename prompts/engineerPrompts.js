@@ -1,4 +1,4 @@
-import inquirer from "inquirer";
+const inquirer = require("inquirer");
 
 const engineerPrompts = () => {
   return inquirer.prompt([
@@ -59,4 +59,4 @@ const engineerPrompts = () => {
   ]);
 };
 
-export default engineerPrompts;
+module.exports = engineerPrompts;

@@ -1,4 +1,4 @@
-import inquirer from "inquirer";
+const inquirer = require("inquirer");
 
 const managerPrompts = () => {
   return inquirer.prompt([
@@ -65,4 +65,4 @@ const managerPrompts = () => {
   ]);
 };
 
-export default managerPrompts;
+module.exports = managerPrompts;

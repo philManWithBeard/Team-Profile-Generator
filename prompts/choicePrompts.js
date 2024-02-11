@@ -1,4 +1,4 @@
-import inquirer from "inquirer";
+const inquirer = require("inquirer");
 
 const choicePrompts = () => {
   return inquirer.prompt([
@@ -15,4 +15,4 @@ const choicePrompts = () => {
   ]);
 };
 
-export default choicePrompts;
+module.exports = choicePrompts;
