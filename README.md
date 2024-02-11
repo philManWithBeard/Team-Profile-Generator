@@ -12,7 +12,11 @@ I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
 ```
 
-# Installation
+## Try it out on Stackblitz
+
+Go to [Stackblitz](https://stackblitz.com/~/github.com/philManWithBeard/team-profile-generator) and type node index.js in the terminal
+
+## Installation
 
 - Clone the repository.
 - To install necessary dependencies, run the following command :
@@ -30,5 +34,19 @@ npm run test
 - The application can be started with the following command:
 
 ```
-node app.js
+node index.js
 ```
+
+## Video Preview
+https://github.com/philManWithBeard/Team-Profile-Generator/assets/48831325/9b912c52-a93d-4160-a0b7-ad4767e89ab1
+
+## License
+MIT
+
+## Contributing
+Reach out using the contact details below or create an issue
+
+## Questions
+See my Github
+Email: philburrowsfm@gmail.com
+
